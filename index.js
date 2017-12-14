@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs');
+const path = require('path');
 const argv = require('yargs')
     .alias('a', 'access_token')
     .describe('a', 'Mapbox access token')
@@ -32,12 +33,12 @@ const allTileData = getTileData(
     argv.zoom,
 );
 
-if (!fs.existsSync('./output')) {
-    fs.mkdirSync(`./output`);
+if (!fs.existsSync(path.resolve(__dirname, './output'))) {
+    fs.mkdirSync(path.resolve(__dirname, './output'));
 }
 
 const dirName = Date.now();
-fs.mkdirSync(`./output/${dirName}`);
+fs.mkdirSync(path.resolve(__dirname, `./output/${dirName}`));
 
 fetchTiles(allTileData, dirName)
     .then(() => stitchTiles(allTileData, dirName))

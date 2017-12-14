@@ -1,5 +1,6 @@
 const { createCanvas, loadImage } = require('canvas');
 const fs = require('fs');
+const path = require('path');
 const { PIXEL_TILE_SIZE } = require('./constants');
 
 const stitchTiles = (allTileData, dirName) => {
@@ -33,7 +34,7 @@ const getCanvasSize = allTileData => {
 const drawTile = (dirName, tile, ctx) => {
     const { z, x, y, canvasX, canvasY } = tile;
     return new Promise(resolve => {
-        loadImage(`./output/${dirName}/${z}-${x}-${y}.png`).then((image) => {
+        loadImage(path.resolve(__dirname, `./output/${dirName}/${z}-${x}-${y}.png`)).then((image) => {
             console.info('Image loaded ', `./output/${dirName}/${z}-${x}-${y}.png`);
             ctx.drawImage(image, canvasX, canvasY, PIXEL_TILE_SIZE, PIXEL_TILE_SIZE);
             resolve();
@@ -43,7 +44,7 @@ const drawTile = (dirName, tile, ctx) => {
 
 const exportImage = (dirName, canvas) => {
     const stream = canvas.pngStream();
-    const output = fs.createWriteStream(`./output/${dirName}/stitched.png`);
+    const output = fs.createWriteStream(path.resolve(__dirname, `./output/${dirName}/stitched.png`));
 
     stream.on('data', (chunk) => {
         output.write(chunk);

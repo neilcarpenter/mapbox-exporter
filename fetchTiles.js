@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const fetch = require('node-fetch');
 
 module.exports = (allTileData, dirName) => 
@@ -8,7 +9,7 @@ module.exports = (allTileData, dirName) =>
                 .then(res => {
                     const { z, x, y } = tile;
                     const fileName = `${z}-${x}-${y}`;
-                    const dest = fs.createWriteStream(`./output/${dirName}/${fileName}.png`);
+                    const dest = fs.createWriteStream(path.resolve(__dirname, `./output/${dirName}/${fileName}.png`));
 
                     dest.on('close', () => {
                         resolve();
