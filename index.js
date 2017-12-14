@@ -2,12 +2,20 @@
 const fs = require('fs');
 const argv = require('yargs')
     .alias('a', 'access_token')
+    .describe('a', 'Mapbox access token')
     .alias('m', 'map_id')
+    .describe('m', 'Mapbox map ID')
     .alias('n', 'north')
+    .describe('n', 'Bounding box north latitude')
     .alias('e', 'east')
+    .describe('e', 'Bounding box east latitude')
     .alias('s', 'south')
+    .describe('s', 'Bounding box south latitude')
     .alias('w', 'west')
+    .describe('w', 'Bounding box west latitude')
     .alias('z', 'zoom')
+    .describe('z', 'Map zoom level')
+    .demandOption(['a', 'm', 'n', 'e', 's', 'w', 'z'])
     .argv
 
 const getTileData = require('./getTileData');
