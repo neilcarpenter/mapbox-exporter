@@ -16,9 +16,9 @@ Options:
   -a, --access_token    Mapbox access token
   -m, --map_id          Mapbox map ID
   -n, --north           Bounding box north latitude
-  -e, --east            Bounding box east latitude
+  -e, --east            Bounding box east longitude
   -s, --south           Bounding box south latitude
-  -w, --west            Bounding box west latitude
+  -w, --west            Bounding box west longitude
   -z, --zoom            Map zoom level
 ```
 
