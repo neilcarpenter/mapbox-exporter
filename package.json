@@ -1,8 +1,32 @@
 {
+  "name": "mapbox-exporter",
+  "version": "0.0.1",
+  "description": "Static Mapbox exporter CLI using raster tile endpoint",
+  "main": "index.js",
   "dependencies": {
     "canvas": "^2.0.0-alpha.8",
     "node-fetch": "^1.7.3",
     "promise-limit": "^2.5.0",
     "yargs": "^10.0.3"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neilcarpenter/mapbox-exporter.git"
+  },
+  "keywords": [
+    "Mapbox",
+    "Map",
+    "Map",
+    "exporter"
+  ],
+  "author": "Neil Carpenter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neilcarpenter/mapbox-exporter/issues"
+  },
+  "homepage": "https://github.com/neilcarpenter/mapbox-exporter#readme"
 }
