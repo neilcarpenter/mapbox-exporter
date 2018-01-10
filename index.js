@@ -30,7 +30,7 @@ const allTileData = getTileData(
     argv.east,
     argv.south,
     argv.west,
-    argv.zoom,
+    argv.zoom
 );
 
 if (!fs.existsSync(path.resolve(__dirname, './output'))) {
@@ -41,5 +41,6 @@ const dirName = Date.now();
 fs.mkdirSync(path.resolve(__dirname, `./output/${dirName}`));
 
 fetchTiles(allTileData, dirName)
+    .catch(e => console.error('Failed to fetch', e))
     .then(() => stitchTiles(allTileData, dirName))
-    .catch(e => console.error('Failed to generate'));
+    .catch(e => console.error('Failed to stitch', e));
